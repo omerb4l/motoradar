@@ -1,0 +1,10 @@
+node_modules/
+dist/
+.expo/
+*.log
+.env
+.DS_Store
+
+# Local tooling / native build artifacts
+frontend/ios/Pods/
+frontend/ios/build/

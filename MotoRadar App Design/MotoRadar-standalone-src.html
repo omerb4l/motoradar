@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+<meta name="ext-resource-dependency" content="./MotoRadarPhone.dc.html" data-resource-id="./MotoRadarPhone.dc.html" />
+<template id="__bundler_thumbnail" data-bg-color="#0b0b0d">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#0b0b0d"/>
+    <circle cx="600" cy="400" r="250" fill="none" stroke="#63FF4D" stroke-opacity="0.28" stroke-width="14"/>
+    <circle cx="600" cy="400" r="150" fill="none" stroke="#63FF4D" stroke-opacity="0.6" stroke-width="14"/>
+    <circle cx="600" cy="400" r="48" fill="#63FF4D"/>
+  </svg>
+</template>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<meta name="design_doc_mode" content="canvas">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>body{margin:0;background:#0b0b0d}a{color:#63FF4D}a:hover{color:#8CFF78}</style>
+</helmet>
+
+<div style="min-height:100vh;padding:56px 60px 80px;box-sizing:border-box;font-family:Archivo,Helvetica,sans-serif;color:#fff;background:radial-gradient(90% 60% at 20% 0%,rgba(99,255,77,.06),transparent 60%),#0b0b0d">
+  <div style="display:flex;align-items:flex-end;gap:24px;flex-wrap:wrap;max-width:1400px">
+    <div>
+      <div style="font:800 54px/1 Archivo,sans-serif;letter-spacing:-.035em">MOTORADAR</div>
+      <div style="font:500 12px/1 JetBrains Mono,monospace;letter-spacing:.18em;color:#63FF4D;margin-top:14px">DARK · LIQUID GLASS · 1–2 TAPS TO ANYTHING</div>
+    </div>
+    <div style="max-width:520px;font:400 14px/1.6 Archivo,sans-serif;color:rgba(255,255,255,.55);margin-left:auto;text-wrap:pretty">
+      Three live tabs. Every surface is a frosted panel floating over the content beneath it — nothing pushes a new page. Hit targets are 52–66px for gloved hands, numerals are tabular mono, labels are all-caps at 11px minimum. Tap the map avatars, swipe the ride requests, switch tabs inside any frame.
+    </div>
+  </div>
+
+  <div style="display:flex;gap:56px;flex-wrap:wrap;margin-top:56px">
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <sc-if value="{{ labels }}" hint-placeholder-val="{{ true }}">
+        <div style="font:600 12px/1 JetBrains Mono,monospace;letter-spacing:.16em;color:rgba(255,255,255,.4)">01 · RADAR — TAP AN AVATAR</div>
+      </sc-if>
+      <dc-import name="MotoRadarPhone" screen="radar" speed-unit="{{ unit }}" show-sos="{{ sos }}" hint-size="390px,844px"></dc-import>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <sc-if value="{{ labels }}" hint-placeholder-val="{{ true }}">
+        <div style="font:600 12px/1 JetBrains Mono,monospace;letter-spacing:.16em;color:rgba(255,255,255,.4)">02 · COMMS — SWIPE A REQUEST</div>
+      </sc-if>
+      <dc-import name="MotoRadarPhone" screen="comms" speed-unit="{{ unit }}" show-sos="{{ sos }}" hint-size="390px,844px"></dc-import>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <sc-if value="{{ labels }}" hint-placeholder-val="{{ true }}">
+        <div style="font:600 12px/1 JetBrains Mono,monospace;letter-spacing:.16em;color:rgba(255,255,255,.4)">03 · GARAGE — VERIFIED BIKE</div>
+      </sc-if>
+      <dc-import name="MotoRadarPhone" screen="garage" speed-unit="{{ unit }}" show-sos="{{ sos }}" hint-size="390px,844px"></dc-import>
+    </div>
+  </div>
+
+  <div style="margin-top:80px;padding-top:36px;border-top:1px solid rgba(255,255,255,.1)">
+    <div style="font:800 30px/1 Archivo,sans-serif;letter-spacing:-.02em">MOTION, ASSIST &amp; RENDEZVOUS</div>
+    <div style="max-width:700px;font:400 14px/1.6 Archivo,sans-serif;color:rgba(255,255,255,.55);margin-top:12px;text-wrap:pretty">Riding HUD dominates when the wheels turn — speed at 150px, everything else demoted, hold-to-fire SOS within thumb reach. While in motion the app refuses complex input: tap a rider or drag a request and it answers "STOP TO INTERACT". Amber beacons are riders who need fuel, a tube, or a push. Accepted rendezvous pushes a dashed route + ETA onto Radar.</div>
+    <div style="display:flex;gap:56px;flex-wrap:wrap;margin-top:36px">
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <sc-if value="{{ labels }}" hint-placeholder-val="{{ true }}">
+          <div style="font:600 12px/1 JetBrains Mono,monospace;letter-spacing:.16em;color:rgba(255,255,255,.4)">04 · RIDING HUD — HOLD SOS, TAP A PIN</div>
+        </sc-if>
+        <dc-import name="MotoRadarPhone" screen="radar" riding="{{ yes }}" speed-unit="{{ unit }}" hint-size="390px,844px"></dc-import>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <sc-if value="{{ labels }}" hint-placeholder-val="{{ true }}">
+          <div style="font:600 12px/1 JetBrains Mono,monospace;letter-spacing:.16em;color:rgba(255,255,255,.4)">05 · RENDEZVOUS ROUTE + AMBER BEACONS</div>
+        </sc-if>
+        <dc-import name="MotoRadarPhone" screen="radar" rendezvous="{{ yes }}" needs-help="{{ yes }}" speed-unit="{{ unit }}" hint-size="390px,844px"></dc-import>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <sc-if value="{{ labels }}" hint-placeholder-val="{{ true }}">
+          <div style="font:600 12px/1 JetBrains Mono,monospace;letter-spacing:.16em;color:rgba(255,255,255,.4)">06 · CHAT — RENDEZVOUS QUICK ACTIONS</div>
+        </sc-if>
+        <dc-import name="MotoRadarPhone" screen="chat" speed-unit="{{ unit }}" hint-size="390px,844px"></dc-import>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:80px;padding-top:36px;border-top:1px solid rgba(255,255,255,.1)">
+    <div style="font:800 30px/1 Archivo,sans-serif;letter-spacing:-.02em">ONBOARDING, VERIFICATION &amp; SETTINGS</div>
+    <div style="max-width:700px;font:400 14px/1.6 Archivo,sans-serif;color:rgba(255,255,255,.55);margin-top:12px;text-wrap:pretty">Signup is two taps to the map. Verification is a single glass drop-zone — tap it to watch the scan run and the badge unlock. Settings leads with Ghost Mode in cold slate-blue (deliberately not the neon green, which always means "live"), then the Spotify link in its own brand green.</div>
+    <div style="display:flex;gap:56px;flex-wrap:wrap;margin-top:36px">
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <sc-if value="{{ labels }}" hint-placeholder-val="{{ true }}">
+          <div style="font:600 12px/1 JetBrains Mono,monospace;letter-spacing:.16em;color:rgba(255,255,255,.4)">07 · WELCOME</div>
+        </sc-if>
+        <dc-import name="MotoRadarPhone" screen="welcome" speed-unit="{{ unit }}" hint-size="390px,844px"></dc-import>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <sc-if value="{{ labels }}" hint-placeholder-val="{{ true }}">
+          <div style="font:600 12px/1 JetBrains Mono,monospace;letter-spacing:.16em;color:rgba(255,255,255,.4)">08 · GARAGE VERIFICATION — TAP THE ZONE</div>
+        </sc-if>
+        <dc-import name="MotoRadarPhone" screen="verify" speed-unit="{{ unit }}" hint-size="390px,844px"></dc-import>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <sc-if value="{{ labels }}" hint-placeholder-val="{{ true }}">
+          <div style="font:600 12px/1 JetBrains Mono,monospace;letter-spacing:.16em;color:rgba(255,255,255,.4)">09 · SETTINGS — GHOST MODE + SPOTIFY</div>
+        </sc-if>
+        <dc-import name="MotoRadarPhone" screen="settings" speed-unit="{{ unit }}" hint-size="390px,844px"></dc-import>
+      </div>
+    </div>
+  </div>
+
+  <div style="display:flex;gap:44px;flex-wrap:wrap;margin-top:72px;padding-top:32px;border-top:1px solid rgba(255,255,255,.1);max-width:1400px">
+    <div style="flex:1;min-width:240px">
+      <div style="font:600 11px/1 JetBrains Mono,monospace;letter-spacing:.16em;color:#63FF4D">GLASS RECIPE</div>
+      <div style="font:400 13px/1.7 JetBrains Mono,monospace;color:rgba(255,255,255,.5);margin-top:12px">blur(26–34px) saturate(180%)<br>bg: white 5→13% vertical<br>border: white 15%<br>inset highlight: white 30%<br>shadow: 0 22px 50px black 55%</div>
+    </div>
+    <div style="flex:1;min-width:240px">
+      <div style="font:600 11px/1 JetBrains Mono,monospace;letter-spacing:.16em;color:#63FF4D">PALETTE</div>
+      <div style="font:400 13px/1.7 JetBrains Mono,monospace;color:rgba(255,255,255,.5);margin-top:12px">#08080A void · #111214 charcoal<br>#63FF4D speed green<br>#FF2D46 SOS red<br>#FFB020 assistance amber<br>accents used only for state, never decoration</div>
+    </div>
+    <div style="flex:1;min-width:240px">
+      <div style="font:600 11px/1 JetBrains Mono,monospace;letter-spacing:.16em;color:#63FF4D">NEXT STEPS</div>
+      <div style="font:400 13px/1.7 Archivo,sans-serif;color:rgba(255,255,255,.5);margin-top:12px">Drop a real bike photo into the Garage header · crash-detection countdown before auto-SOS · "helper en route" state on the amber beacon · turn-by-turn card for the rendezvous route · group rendezvous with 3+ riders.</div>
+    </div>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;speedUnit&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;mph&quot;,&quot;km/h&quot;],&quot;default&quot;:&quot;mph&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;showSos&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;showLabels&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      yes: true,
+      unit: this.props.speedUnit || 'mph',
+      sos: this.props.showSos !== false,
+      labels: this.props.showLabels !== false
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+{
+  "expo": {
+    "name": "MotoRadar",
+    "slug": "motoradar",
+    "scheme": "motoradar",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "dark",
+    "backgroundColor": "#08080A",
+    "ios": {
+      "supportsTablet": false,
+      "infoPlist": {
+        "NSLocationWhenInUseUsageDescription": "MotoRadar shows nearby riders on the map while the app is open.",
+        "NSLocationAlwaysAndWhenInUseUsageDescription": "MotoRadar can track your ride in the background so other riders can see you and reach you in an emergency.",
+        "NSPhotoLibraryUsageDescription": "MotoRadar needs access to your photos to add ride memories and motorcycle photos.",
+        "NSPhotoLibraryAddUsageDescription": "MotoRadar needs permission to save ride posters to your Photos.",
+        "NSCameraUsageDescription": "MotoRadar needs camera access to take motorcycle photos.",
+        "UIBackgroundModes": [
+          "location"
+        ]
+      },
+      "bundleIdentifier": "com.omerbal.motoradar"
+    },
+    "android": {
+      "permissions": [
+        "android.permission.ACCESS_COARSE_LOCATION",
+        "android.permission.ACCESS_FINE_LOCATION",
+        "android.permission.ACCESS_BACKGROUND_LOCATION",
+        "android.permission.ACCESS_COARSE_LOCATION",
+        "android.permission.ACCESS_FINE_LOCATION",
+        "android.permission.RECORD_AUDIO"
+      ]
+    },
+    "plugins": [
+      [
+        "expo-location",
+        {
+          "locationAlwaysAndWhenInUsePermission": "MotoRadar can track your ride in the background so other riders can see you and reach you in an emergency."
+        }
+      ],
+      "expo-asset",
+      "expo-secure-store",
+      "expo-font",
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "MotoRadar needs access to your photos to verify your motorcycle.",
+          "cameraPermission": "MotoRadar needs camera access to take a photo of your motorcycle for verification."
+        }
+      ],
+      "expo-status-bar",
+      [
+        "expo-media-library",
+        {
+          "photosPermission": "MotoRadar needs access to your photos to save your ride telemetry story poster.",
+          "savePhotosPermission": "MotoRadar needs permission to save telemetry posters directly to your Camera Roll."
+        }
+      ]
+    ]
+  }
+}

@@ -1,0 +1,31 @@
+services:
+  db:
+    image: postgis/postgis:16-3.4
+    # postgis/postgis only ships linux/amd64 — on Apple Silicon Docker runs
+    # it under Rosetta emulation. Fine for local dev; pinning here just
+    # silences the "platform mismatch" warning instead of leaving it implicit.
+    platform: linux/amd64
+    container_name: motoradar-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: motoradar
+      POSTGRES_PASSWORD: motoradar
+      POSTGRES_DB: motoradar
+    ports:
+      # Host 5433 -> container 5432: something on this Mac already owns 5432
+      # (a system Postgres, e.g. an EDB installer service), so we don't fight it.
+      - "5433:5432"
+    volumes:
+      - motoradar_pgdata:/var/lib/postgresql/data
+      # Anything in docker-entrypoint-initdb.d/ runs once, alphabetically,
+      # only on first container start (empty data dir). init.sql already
+      # creates the postgis extension itself, so no separate enable step.
+      - ./backend/src/db/init.sql:/docker-entrypoint-initdb.d/01-init.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U motoradar -d motoradar"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  motoradar_pgdata:
